@@ -1,0 +1,26 @@
+<h1>Mes musiques</h1>
+
+<div *ngIf="isLoading">
+    <h2>Chargement en cours</h2>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="!isLoading">
+
+    <mat-card class="example-card" *ngFor="let music of musics">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{ music.titre }}</mat-card-title>
+            <mat-card-subtitle>{{ music.auteur }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{ music.cover }}" alt="Photo de {{ music.auteur }} intitulée {{ music.titre }}">
+        <mat-card-content>
+            <p>
+               Style de musique {{ music.style }}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a [routerLink]="['', music.id]"><button mat-button>Ecouter</button></a>
+        </mat-card-actions>
+    </mat-card>
+</div>

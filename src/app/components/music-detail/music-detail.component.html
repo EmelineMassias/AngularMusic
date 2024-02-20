@@ -1,0 +1,25 @@
+<a [routerLink]="['/']" class="btn-retour"><button mat-raised-button color="primary">Retour</button></a>
+
+<div *ngIf="isLoading">
+    <h2>Chargement en cours</h2>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="!isLoading" class="align-center">
+    <h1>{{ music?.titre }} <button mat-raised-button color="primary" matBadge="8" matBadgePosition="before"
+            matBadgeColor="accent">{{ music?.style }}</button></h1>
+    <h2>{{ music?.auteur }}</h2>
+
+    <div>
+        <img src="{{ music?.cover }}" alt="Musique {{ music?.titre }} de {{ music?.auteur }}">
+    </div>
+
+    <iframe width="560" height="315" [src]="music?.urlYoutube" title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+
+    <div>
+        <a href=""><button (click)="deleteMusicModal('0ms','0ms')" mat-raised-button color="dark">Supprimer</button></a>
+    </div>
+</div>
+
